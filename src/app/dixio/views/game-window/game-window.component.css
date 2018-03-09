@@ -1,0 +1,51 @@
+.hand {
+  height: 700px;
+  width: 250px;
+  position: absolute;
+  right: 0px;
+}
+
+.hand-container {
+  position: relative;
+  margin: 20px;
+  float: right;
+}
+
+.game-window {
+  height: 700px;
+  width: 100%;
+  position: relative;
+}
+
+.card {
+  margin-bottom: -150px;
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 6px;
+  position: relative;
+  background-color: #D4D4D4;
+  transition:.5s;
+}
+
+.card:hover {
+  margin-bottom: -40px;
+  background-color: #888888;
+
+}
+
+.header {
+  border: 2px solid black;
+  border-radius: 6px;
+  /*width: 300px;*/
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 300px;
+}
+
+.header:hover {
+  background-color: #888888;
+}
+
+

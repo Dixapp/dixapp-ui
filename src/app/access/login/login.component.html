@@ -1,0 +1,16 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+
+<div class="container">
+  <div class="card card-container">
+    <h1 class="title">Dixapp</h1>
+    <p>Sign in</p>
+    <form class="form-signin" (submit)="f.form.valid && submit()" #f="ngForm">
+      <input type="email" id="inputEmail" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" placeholder="Email address" required autofocus>
+      <input type="password" id="inputPassword" name="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+    </form>
+    <a class="btn btn-sm btn-white btn-block" [routerLink]="['/register']" href="#">Create an account</a>
+  </div>
+</div>

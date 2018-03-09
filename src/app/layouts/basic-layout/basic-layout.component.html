@@ -1,0 +1,35 @@
+<div class="sidenav">
+
+  <a class="profile">
+     <span class="fa fa-user profile-text"> {{getUserName()}} </span> <i style="text-align: right;" (click)="toggle2()" class="fa fa-angle-down"></i>
+  </a>
+  <ul [@toggleAnimation]="toggleState2" class="collapsed">
+    <li>
+      <a (click)="logout()"> Logout </a>
+    </li>
+  </ul>
+
+  <a>
+     <span [ngClass]="activeTab('gamespanel')" [routerLink]="['/app/gamespanel']" >Games</span> <i style="text-align: right;" (click)="toggle()" class="fa fa-angle-down"></i>
+  </a>
+  <ul [@toggleAnimation]="toggleState" class="collapsed">
+    <li>
+      <a [ngClass]="activeTab('dixit')" [routerLink]="['/app/dixit']"> Dixit </a>
+    </li>
+  </ul>
+
+
+  <!--<a>-->
+    <!--<img imagesrc="/images/test"/>-->
+  <!--</a>-->
+
+</div>
+
+
+<div class="main">
+  <router-outlet></router-outlet>
+
+
+</div>
+
+

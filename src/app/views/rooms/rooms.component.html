@@ -1,0 +1,28 @@
+<p-dataList [value]="rooms" [paginator]="true" [rows]="5">
+  <p-header>
+    Pokoje
+  </p-header>
+  <ng-template let-room pTemplate="item">
+    <div class="ui-g ui-fluid car-item">
+      <div class="ui-g-12 ui-md-1" style="text-align:center;">
+        <i class="fa fa-gamepad" style="vertical-align: bottom; font-size: 42px;"></i>
+      </div>
+      <div class="ui-g-12 ui-md-11 car-details">
+        <div class="ui-g">
+          <div class="ui-g-1 ui-sm-1">Title: </div>
+          <div class="ui-g-3 ui-sm-1">{{room.title}}</div>
+          <div class="ui-g-4 ui-sm-1">{{room.users}}</div>
+          <div class="ui-g-4 ui-sm-6">
+            <button pButton type="button" (click)="joinToRoom(room.id)" label="Dołącz do gry" icon="fa-check"></button>
+          </div>
+        </div>
+
+        <div class="ui-g">
+          <div class="ui-g-1 ui-sm-6">Miejsca: </div>
+          <div class="ui-g-3 ui-sm-6">1 / 8</div>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>
+</p-dataList>

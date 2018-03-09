@@ -1,0 +1,10 @@
+.room-container {
+  overflow: hidden;
+}
+
+.chat-card {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1em;
+
+}
