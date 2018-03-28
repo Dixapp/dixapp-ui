@@ -1,49 +1,55 @@
+
 .sidenav {
   height: 100%;
   width: 200px;
   position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 20px;
 }
 
-.profile {
-  border-width: 1px;
-  border-style: solid;
-  border-color: white;
-}
-
-
-
-/* Style the sidenav links and the dropdown button */
-.sidenav a{
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
+.sidenav-item {
+  width: 100%;
+  color: whitesmoke;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: 'Raleway', sans-serif;
   font-size: 20px;
-  color: #818181 !important;
-  display: block;
-  border: none;
-  background: none !important;
-  width:100%;
-  text-align: left;
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+  line-height: 40px;
+
+}
+
+.sidenav-item-selected {
+  background-color: #888888;
+}
+
+.icon-item {
+  float: right;
+  padding-right: 5px;
+  padding-left: 5px;
   cursor: pointer;
-  outline: none;
-  z-index: 1;
+  z-index: 100;
+
 }
 
-
-expandable-list-item {
-  background-color: #262626 !important;
-  display: block;
-  border: none;
+.text-item {
 }
 
-/* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover, expandable-list-item:hover {
-  color: #f1f1f1;
+.router-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.text-item-small{
+  font-size: 0.7em;
+}
+
+.title {
+  float: left;
+  border: 1px solid white;
+  overflow: hidden;
 }
 
 /* Main content */
@@ -62,9 +68,6 @@ expandable-list-item {
 .collapsed {
   overflow: hidden;
   list-style-type: none;
-  /*border-width: 1px;*/
-  /*border-style: solid;*/
-  /*border-color: white;*/
 }
 
 

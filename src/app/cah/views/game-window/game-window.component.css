@@ -5,16 +5,19 @@
   right: 0px;
 }
 
+
+
 .hand-container {
   position: relative;
-  margin: 20px;
+  margin: 50px;
   float: right;
 }
 
 .game-window {
-  height: 700px;
+  height: 900px;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .card {
@@ -47,5 +50,39 @@
 .header:hover {
   background-color: #888888;
 }
+
+
+.answers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 350px);
+  height: 65%;
+  margin: 20px;
+
+
+}
+
+.row {
+  position: relative;
+  height: 330px;
+  /*overflow: hidden;*/
+  width:100%;
+}
+
+.answer-container {
+  position: relative;
+  margin: 10px;
+  float: right;
+}
+
+.chose-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  /*width: 50px;*/
+  /*height: 30px;*/
+}
+
 
 

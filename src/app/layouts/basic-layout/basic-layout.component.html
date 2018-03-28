@@ -1,35 +1,21 @@
-<div class="sidenav">
+<div [@toggleAnimation]=" toggleState ? 'expanded' : 'collapsed' " class="sidenav">
+  <div class="sidenav-item">
+    <span class="text-item" *ngIf="toggleState">Dixapp</span>
+    <span class="icon-item"> <i (click)="toggleStateB()" class="fa fa-bars"></i> </span>
+  </div>
 
-  <a class="profile">
-     <span class="fa fa-user profile-text"> {{getUserName()}} </span> <i style="text-align: right;" (click)="toggle2()" class="fa fa-angle-down"></i>
-  </a>
-  <ul [@toggleAnimation]="toggleState2" class="collapsed">
-    <li>
-      <a (click)="logout()"> Logout </a>
-    </li>
-  </ul>
-
-  <a>
-     <span [ngClass]="activeTab('gamespanel')" [routerLink]="['/app/gamespanel']" >Games</span> <i style="text-align: right;" (click)="toggle()" class="fa fa-angle-down"></i>
-  </a>
-  <ul [@toggleAnimation]="toggleState" class="collapsed">
-    <li>
-      <a [ngClass]="activeTab('dixit')" [routerLink]="['/app/dixit']"> Dixit </a>
-    </li>
-  </ul>
-
-
-  <!--<a>-->
-    <!--<img imagesrc="/images/test"/>-->
-  <!--</a>-->
+  <div class="sidenav-item sidenav-item-selected">
+    <a class="router-link" routerLink="/app/dixit" routerLinkActive="active-link">
+      <span class="text-item text-item-small" *ngIf="toggleState">Cards Against Humanity</span>
+      <span class="icon-item"> <i  class="fa fa-book"></i> </span>
+    </a>
+  </div>
 
 </div>
 
 
-<div class="main">
+<div class="main" [@toggleAnimationB]=" toggleState ? 'expanded' : 'collapsed' ">
   <router-outlet></router-outlet>
-
-
 </div>
 
 

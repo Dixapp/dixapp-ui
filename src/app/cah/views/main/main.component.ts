@@ -4,12 +4,12 @@ import { MessageService } from "primeng/components/common/messageservice";
 import { UserService } from "../../../access/user.service";
 import { DixioService } from "../../shared_services/dixio.service";
 import { trigger, state, transition, animate, style } from "@angular/animations";
-import { RoomsDialogComponent } from "../../../views/rooms-dialog/rooms-dialog.component";
+import { RoomsDialogComponent } from "../rooms-dialog/rooms-dialog.component";
 
 @Component({
   selector: 'app-dixit',
-  templateUrl: './dixit.component.html',
-  styleUrls: ['./dixit.component.css'],
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
   animations: [
     trigger('toggleAnimation', [
       state('collapsed', style({
@@ -22,17 +22,35 @@ import { RoomsDialogComponent } from "../../../views/rooms-dialog/rooms-dialog.c
     ])
   ]
 })
-export class DixitComponent implements OnInit, OnDestroy {
+export class MainComponent implements OnInit, OnDestroy {
 
   @ViewChild('dialog') dialog: RoomsDialogComponent;
   socket: SocketService;
+  roomTitle: any = "";
+  chooser: any = "";
   constructor(private messageService: MessageService, private dixioService: DixioService) { }
 
   ngOnInit() {
-    this.dixioService.socket.connectIfNeeded();
+    this.dixioService.connectIfNeeded();
     this.socket = this.dixioService.socket;
-    this.dixioService.socket.getMessage().subscribe((message:any)=>{
-      this.messageService.add({severity:'info', summary:'Connected to servers', detail:message.msg});
+    this.dixioService.room.subscribe((room)=> {
+      if(room){
+        this.roomTitle = room.title;
+        this.backButtonState = true;
+        this.createButtonState = false;
+        this.viewState = false;
+        this.leaveButtonState = true;
+      } else {
+        this.roomTitle = "";
+        this.backButtonState = false;
+        this.createButtonState = true;
+        this.viewState = true;
+        this.leaveButtonState = false;
+      }
+    });
+    this.dixioService.chooser.subscribe((chooser)=>{
+      this.chooser = chooser;
+      console.log(chooser);
     });
   }
 
@@ -44,18 +62,17 @@ export class DixitComponent implements OnInit, OnDestroy {
     this.dialog.show();
   }
 
-  toggleState: boolean = true;
+  viewState: boolean = true;
+  createButtonState:boolean = true;
   backButtonState: boolean = false;
+  leaveButtonState: boolean = false;
 
-  toggle(a:any) {
-    console.log(a);
-    this.toggleState = !this.toggleState;
-    this.backButtonState = true;
-    return this.toggleState;
+  leaveRoom(): void {
+    this.dixioService.leaveRoom();
   }
 
-  switchView(room_id:string): void {
-    this.toggle('');
+  switchView() {
+    this.viewState = !this.viewState;
   }
 
 

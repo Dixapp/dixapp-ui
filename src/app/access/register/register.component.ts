@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../user.service";
-import {Observable} from "rxjs/Observable";
+import { UserService } from "../user.service";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/do';
+
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
   submit(): any {
     this.userService.create(this.model)
-      .catch((err)=> {
+      .do((data)=>{},(err)=> {
         console.log("Error");
         return Observable.throw(err);
       })

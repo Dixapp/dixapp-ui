@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import { SocketService } from "../../helpers/socket.service";
+import { DixioService } from "../../shared_services/dixio.service";
 
 @Component({
   selector: 'app-rooms-dialog',
@@ -8,8 +8,7 @@ import { SocketService } from "../../helpers/socket.service";
 })
 export class RoomsDialogComponent implements OnInit {
 
-  constructor() { }
-  @Input() socket: SocketService;
+  constructor(private dixioService: DixioService) { }
   visible: boolean = false;
   model: any = {};
 
@@ -26,7 +25,7 @@ export class RoomsDialogComponent implements OnInit {
   }
 
   submit() {
-    this.socket.createRoom(this.model);
+    this.dixioService.createRoom(this.model);
     this.hide();
   }
 

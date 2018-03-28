@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group [selectedIndex]="activeTab">
   <mat-tab label="Main chat">
     <div #chatWindow class="chat-card">
       <div>
@@ -15,12 +15,19 @@
       </mat-form-field>
     </form>
   </mat-tab>
-  <mat-tab label="Room chat">
+  <mat-tab *ngIf="!roomChatActive" label="Room chat" disabled></mat-tab>
+  <mat-tab *ngIf="roomChatActive" label="Room chat">
+
+    <div class="setup-panel">
+      <button [disabled]="!startButtonActive" pButton (click)="startGame()" label="Start" style="margin: 5px"></button>
+    </div>
+
     <div class="user-list">
       <div *ngFor="let user of userList" class="user-item" data-toggle="tooltip" title="{{user}}">
-        <i class="fa fa-user" style="font-size: 48px;"></i>
+        <i class="fa fa-user"></i><span> {{ user }} </span>
+        <span class="score" *ngIf="scores[user]"> {{ scores[user] }} </span>
+        <span class="score" *ngIf="!scores[user]"> 0 </span>
       </div>
-
     </div>
 
     <div #localChatWindow class="chat-card-local">

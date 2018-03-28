@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import { socketServiceFactory, SocketService } from "../../helpers/socket.service";
-import { UserService } from "../../access/user.service";
+import { socketServiceFactory, SocketService } from "../../../helpers/socket.service";
+import { UserService } from "../../../access/user.service";
+import { DixioService } from "../../shared_services/dixio.service";
 import { MessageService } from "primeng/components/common/messageservice";
 import { RoomsDialogComponent } from "../rooms-dialog/rooms-dialog.component";
 import { trigger, state, transition, animate, style } from "@angular/animations";
@@ -13,22 +14,17 @@ import { trigger, state, transition, animate, style } from "@angular/animations"
 })
 export class RoomsComponent implements OnInit {
 
-  @Input() socket: SocketService;
   @Output() onRoomSelect: EventEmitter<string> = new EventEmitter();
   rooms: any = [];
 
-  constructor(private userService: UserService, private messageService: MessageService) {}
+  constructor(private userService: UserService, private messageService: MessageService, private dixioService: DixioService) {}
 
   ngOnInit() {
-    this.socket.getRooms().subscribe((rooms)=>{
-        console.log(rooms);
-        this.rooms = rooms;
-    });
+    this.dixioService.roomList.subscribe((rooms)=>this.rooms = rooms);
   }
 
   joinToRoom(room_id) {
-    console.log(room_id);
-    this.socket.joinRoom(room_id);
+    this.dixioService.joinRoom(room_id)
     this.onRoomSelect.emit(room_id);
   }
 }

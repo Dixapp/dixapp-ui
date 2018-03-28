@@ -13,51 +13,61 @@ import {HttpClient} from "@angular/common/http";
   animations: [
     trigger('toggleAnimation', [
       state('collapsed', style({
-        height: '0px',
+        width: '40px',
       })),
       state('expanded', style({
-        height: '*',
+        width: '*',
       })),
       transition('collapsed <=> expanded', animate('500ms ease-in-out'))
-    ])
+    ]),
+
+
+    trigger('toggleAnimationB', [
+      state('collapsed', style({
+        marginLeft: '40px'
+      })),
+      state('expanded', style({
+        marginLeft: '*'
+      })),
+      transition('collapsed <=> expanded', animate('500ms ease-in-out'))
+    ]),
+
+    trigger('toggleTitle', [
+      state('collapsed', style({
+        width: '0px'
+      })),
+      state('expanded', style({
+        width: '*'
+      })),
+      transition('collapsed <=> expanded', animate('500ms ease-in-out'))
+    ]),
   ]
 })
-export class BasicLayoutComponent implements OnInit {
+export class BasicLayoutComponent {
 
   constructor(private userService: UserService,
               private router: Router,
               private http: HttpClient) { }
 
-  getUserName(): any {
-    return this.userService.userData.user;
+
+
+
+  toggleState: boolean = true;
+  toggleStateB(){
+    this.toggleState = !this.toggleState;
   }
 
-  ngOnInit() {
-    console.log(this.router.url);
+  getUserName(): any {
+    return this.userService.userData.user;
   }
 
   activeTab(tabname: any){
     return (this.router.url.indexOf(tabname) > -1) ? 'active' : '';
   }
 
-  toggleState: string = 'collapsed';
-  toggleState2: string = 'collapsed';
-
-
-  toggle() {
-    if(this.toggleState == 'collapsed') this.toggleState = 'expanded';
-    else this.toggleState = 'collapsed';
-  }
-
-  toggle2() {
-    if(this.toggleState2 == 'collapsed') this.toggleState2 = 'expanded';
-    else this.toggleState2 = 'collapsed';
-  }
-
   logout() {
     this.userService.logout();
   }
-
 
 
 }

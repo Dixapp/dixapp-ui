@@ -14,27 +14,29 @@ import { CardModule } from 'primeng/card';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { socketServiceProvider } from "./helpers/socket.service";
-import { RoomsComponent } from './views/rooms/rooms.component';
+import { RoomsComponent } from './cah/views/rooms/rooms.component';
 import { ExpandableListModule } from 'angular2-expandable-list';
-import { DixitComponent } from './dixio/views/dixit/dixit.component';
+import { MainComponent } from './cah/views/main/main.component';
 import { GrowlModule } from "primeng/growl";
 import { MessageService } from "primeng/components/common/messageservice";
 import { MessagesModule } from 'primeng/messages';
 
 import { DataListModule } from 'primeng/datalist';
-import { RoomsDialogComponent } from './views/rooms-dialog/rooms-dialog.component';
+import { RoomsDialogComponent } from './cah/views/rooms-dialog/rooms-dialog.component';
 import { DialogModule } from "primeng/dialog";
-import { DixioService } from "./dixio/shared_services/dixio.service";
+import { DixioService } from "./cah/shared_services/dixio.service";
 import { TabViewModule } from 'primeng/tabview';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
-import { ChatComponent } from './views/chat/chat.component';
-import { GameWindowComponent } from './dixio/views/game-window/game-window.component';
+import { ChatComponent } from './cah/views/chat/chat.component';
+import { GameWindowComponent } from './cah/views/game-window/game-window.component';
 import { interceptorProvider } from "./helpers/token-interceptor";
 
 import { HttpClientModule } from "@angular/common/http";
 import { ImagesrcDirective } from './helpers/imagesrc.directive';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 
 @NgModule({
@@ -43,7 +45,7 @@ import { ImagesrcDirective } from './helpers/imagesrc.directive';
     BasicLayoutComponent,
     GamesPanelComponent,
     RoomsComponent,
-    DixitComponent,
+    MainComponent,
     RoomsDialogComponent,
     ChatComponent,
     GameWindowComponent,
@@ -68,7 +70,8 @@ import { ImagesrcDirective } from './helpers/imagesrc.directive';
     MatInputModule,
     MatDividerModule,
     MessagesModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule
   ],
   providers: [
     socketServiceProvider,

@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Location, LocationStrategy } from "@angular/common";
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { CanActivate } from "@angular/router";
-import {Subject} from "rxjs/Subject";
+import { Subject} from "rxjs/Subject";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs/Observable";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 import 'rxjs/add/operator/do';
 
@@ -24,7 +20,7 @@ export class UserService{
     login(username: string, password: string) {
       console.log('log');
       return this.http.post('/users/authenticate', { email: username, password: password })
-        .do((response: Response) => {
+        .do((response: any) => {
           let user = response;
           if (user) {
             this.userData = user;

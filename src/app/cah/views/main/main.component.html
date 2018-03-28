@@ -1,27 +1,35 @@
 <!--<p-growl></p-growl>-->
 
-<app-rooms-dialog #dialog [socket]="socket"></app-rooms-dialog>
+<app-rooms-dialog #dialog></app-rooms-dialog>
 
 <div class="main">
 
   <div class="ui-g">
     <div class="ui-g-12 ui-md-12 ui-g-nopad">
-      <div class="ui-g-12">
-        <button pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>
-        <button *ngIf="backButtonState" pButton (click)="switchView()" type="button" label="Powrót" icon="fa-arrow-left"></button>
+      <div class="ui-g-12 ui-md-6">
+        <button *ngIf="createButtonState" pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>
+        <button *ngIf="backButtonState" pButton (click)="switchView()" type="button" label="{{!viewState ? 'Pokoje':'Gra'}}" icon="{{ !viewState ? 'fa-arrow-left' : 'fa-arrow-right' }}"></button>
+        <button *ngIf="leaveButtonState" pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>
+
+      </div>
+      <div class="ui-g-12 ui-md-6">
+        <div class="info">
+          <p>{{ roomTitle ? "Twój pokój: " + roomTitle: "" }}</p>
+          <p>{{ chooser ? "Odpowiedzi wybiera: " + chooser : "" }}</p>
+        </div>
       </div>
       <div class="ui-g-12 ui-g-nopad">
         <div class="ui-g">
           <div class="ui-g-12 ui-md-12">
-            <div [@toggleAnimation]="toggleState ? 'expanded' : 'collapsed'" class="room-container">
-              <app-rooms [socket]="socket" (onRoomSelect)="toggle($event)"> </app-rooms>
+            <div [@toggleAnimation]="viewState ? 'expanded' : 'collapsed'" class="room-container">
+              <app-rooms> </app-rooms>
             </div>
           </div>
         </div>
 
         <div class="ui-g">
           <div class="ui-g-12 ui-md-12">
-            <div [@toggleAnimation]="toggleState ? 'collapsed' : 'expanded'" class="game-window">
+            <div [@toggleAnimation]="viewState ? 'collapsed' : 'expanded'" class="game-window">
               <app-game-window></app-game-window>
             </div>
           </div>
@@ -45,11 +53,27 @@
     <div class="ui-g-12">
       <p-messages></p-messages>
     </div>
+
+    <div class="ui-g-12">
+      <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+        <div class="flipper">
+          <div class="front">
+            XDDD
+          </div>
+          <div class="back">
+            SMUTEG
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 
 </div>
 
 
 <div class="sidenav">
-  <app-chat [socket]="socket"></app-chat>
+  <app-chat></app-chat>
 </div>
