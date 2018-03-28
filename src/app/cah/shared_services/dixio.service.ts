@@ -45,6 +45,12 @@ export class DixioService {
     this.stage.subscribe((stage)=>{
       console.log("Stage: "+stage);
     })
+
+    this.error.subscribe((error)=>{
+      console.log(error);
+    })
+
+
   }
 
   connectIfNeeded(){
