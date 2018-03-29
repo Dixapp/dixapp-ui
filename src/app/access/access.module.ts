@@ -8,14 +8,15 @@ import { UserService } from "./user.service";
 import { MessageService } from 'primeng/components/common/messageservice';
 import { GrowlModule } from "primeng/growl";
 import { AuthGuard } from "./auth.guard";
-
+import { TranslationModule } from "../translate/translation.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AccessRoutingModule,
-    GrowlModule
+    GrowlModule,
+    TranslationModule
   ],
   declarations: [
     LoginComponent,

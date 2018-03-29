@@ -36,7 +36,8 @@ import { interceptorProvider } from "./helpers/token-interceptor";
 import { HttpClientModule } from "@angular/common/http";
 import { ImagesrcDirective } from './helpers/imagesrc.directive';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TranslationModule } from "./translate/translation.module";
 
 
 @NgModule({
@@ -71,7 +72,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDividerModule,
     MessagesModule,
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSnackBarModule,
+    TranslationModule
   ],
   providers: [
     socketServiceProvider,

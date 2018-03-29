@@ -34,16 +34,13 @@ export class ChatComponent implements OnInit {
 
     this.dixioService.localMsg.subscribe((msg)=> {
       self.addMsgLocal(msg.owner + ': ' +msg.msg);
-      console.log(msg);
     });
 
     this.dixioService.room.subscribe((room)=> {
-        console.log(room);
         self.userList = room ? room.users : [];
         this.activeTab = room ? 1 : 0;
         this.roomChatActive = !!room;
         this.messagesLocal = [];
-        console.log(room);
     });
 
     combineLatest(this.dixioService.stage, this.dixioService.room).subscribe(([stage, room])=>{
@@ -74,7 +71,6 @@ export class ChatComponent implements OnInit {
 
   sendGlobalMessage(e) {
     if(e[e.length - 1] == '\n'){
-
       this.dixioService.sendGlobalChatMessage(this.textAreaMsgGlobal.slice(0,-1));
       this.textAreaMsgGlobal = "";
     }

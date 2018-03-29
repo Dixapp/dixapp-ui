@@ -3,7 +3,7 @@
   height: 100%;
   width: 200px;
   position: fixed;
-  background-color: #111;
+  background-color: #333333;
   overflow-x: hidden;
 }
 
@@ -23,6 +23,16 @@
 
 .sidenav-item-selected {
   background-color: #888888;
+}
+
+.sidenav-item-bottom {
+  position: absolute;
+  /*width: 100%;*/
+  /*height: 40px;*/
+  /*overflow: hidden;*/
+  /*line-height: 40px;*/
+  /*color: whitesmoke;*/
+  bottom: 0;
 }
 
 .icon-item {

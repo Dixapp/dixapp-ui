@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 import 'rxjs/add/operator/do';
+import { TranslateService } from "../translate/translate.service";
 
 
 @Injectable()
@@ -13,12 +14,11 @@ export class UserService{
     userData: any = { logged: false };
     status: Subject<any> = new Subject<any>();
 
-    constructor(private http: HttpClient, private router: Router) {
-
+    constructor(private http: HttpClient, private router: Router, private translateService: TranslateService) {
+      translateService.use('pl'); //temporary solution, should be loaded from api
     }
 
     login(username: string, password: string) {
-      console.log('log');
       return this.http.post('/users/authenticate', { email: username, password: password })
         .do((response: any) => {
           let user = response;
@@ -38,10 +38,9 @@ export class UserService{
 
     async logged() {
         if(this.userData.logged){
-            console.log("bramka 1")
             return true;
         } else {
-            var response : any = await this.http.post("/users/logged", {}).toPromise();
+            var response : any = await this.http.post('/users/logged', {}).toPromise();
             if(response.logged){
                 let currentUser = JSON.parse(localStorage.getItem('currentUser'));
                 this.userData = currentUser;

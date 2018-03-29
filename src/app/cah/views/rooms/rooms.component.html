@@ -13,7 +13,8 @@
           <div class="ui-g-3 ui-sm-1">{{room.title}}</div>
           <div class="ui-g-4 ui-sm-1">{{room.users}}</div>
           <div class="ui-g-4 ui-sm-6">
-            <button pButton type="button" (click)="joinToRoom(room.id)" label="Dołącz do gry" icon="fa-check"></button>
+            <button *ngIf="!myRoom || myRoom.id !== room.id" pButton type="button" (click)="joinToRoom(room.id)" label="Dołącz do gry" icon="fa-check"></button>
+            <button *ngIf="myRoom && myRoom.id === room.id" pButton [disabled]="true" type="button" label="Jesteś w tym pokoju" icon="fa-check"></button>
           </div>
         </div>
 

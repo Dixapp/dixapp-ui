@@ -5,6 +5,7 @@ import { DixioService } from "../../shared_services/dixio.service";
 import { MessageService } from "primeng/components/common/messageservice";
 import { RoomsDialogComponent } from "../rooms-dialog/rooms-dialog.component";
 import { trigger, state, transition, animate, style } from "@angular/animations";
+import { combineLatest } from "rxjs/observable/combineLatest";
 
 @Component({
   selector: 'app-rooms',
@@ -16,11 +17,17 @@ export class RoomsComponent implements OnInit {
 
   @Output() onRoomSelect: EventEmitter<string> = new EventEmitter();
   rooms: any = [];
+  myRoom: any = {};
 
   constructor(private userService: UserService, private messageService: MessageService, private dixioService: DixioService) {}
 
   ngOnInit() {
-    this.dixioService.roomList.subscribe((rooms)=>this.rooms = rooms);
+
+    combineLatest(this.dixioService.room, this.dixioService.roomList).subscribe(([room, roomList])=>{
+      this.rooms = roomList;
+      this.myRoom = room;
+    });
+    // this.dixioService.roomList.subscribe((rooms)=>this.rooms = rooms);
   }
 
   joinToRoom(room_id) {

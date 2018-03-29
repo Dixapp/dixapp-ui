@@ -1,13 +1,20 @@
 <div [@toggleAnimation]=" toggleState ? 'expanded' : 'collapsed' " class="sidenav">
   <div class="sidenav-item">
-    <span class="text-item" *ngIf="toggleState">Dixapp</span>
+    <span class="text-item" *ngIf="toggleState">{{ 'title' | translate }}</span>
     <span class="icon-item"> <i (click)="toggleStateB()" class="fa fa-bars"></i> </span>
   </div>
 
   <div class="sidenav-item sidenav-item-selected">
     <a class="router-link" routerLink="/app/dixit" routerLinkActive="active-link">
-      <span class="text-item text-item-small" *ngIf="toggleState">Cards Against Humanity</span>
+      <span class="text-item text-item-small" *ngIf="toggleState">{{ 'cah_name' | translate }}</span>
       <span class="icon-item"> <i  class="fa fa-book"></i> </span>
+    </a>
+  </div>
+
+  <div class="sidenav-item sidenav-item-bottom">
+    <a class="router-link" routerLink="/app/dixit" routerLinkActive="active-link">
+      <span class="text-item text-item-small" *ngIf="toggleState">Wyloguj</span>
+      <span class="icon-item"> <i  class="fa fa-sign-out"></i> </span>
     </a>
   </div>
 

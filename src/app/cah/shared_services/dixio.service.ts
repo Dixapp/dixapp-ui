@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from "../../access/user.service";
 import { SocketService, socketServiceFactory } from "../../helpers/socket.service";
 import { Subject } from "rxjs/Subject";
+import { MatSnackBar } from "@angular/material";
 
 
 @Injectable()
@@ -21,7 +22,7 @@ export class DixioService {
   scores: Subject<any> = new Subject<any>();
   error: Subject<any> = new Subject<any>();
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private snackBar: MatSnackBar) {
 
     this.socket = socketServiceFactory(userService, '/dixio');
 
@@ -39,17 +40,16 @@ export class DixioService {
     this.socket.on('error_msg', (err)=> this.error.next(err));
 
     this.serverMsg.subscribe((msg)=>{
-      console.log(msg);
+      this.snackBar.open(msg.msg, "info", {duration: 3000});
     });
 
     this.stage.subscribe((stage)=>{
       console.log("Stage: "+stage);
-    })
+    });
 
     this.error.subscribe((error)=>{
       console.log(error);
-    })
-
+    });
 
   }
 
