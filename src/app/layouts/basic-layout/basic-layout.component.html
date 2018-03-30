@@ -12,7 +12,7 @@
   </div>
 
   <div class="sidenav-item sidenav-item-bottom">
-    <a class="router-link" routerLink="/app/dixit" routerLinkActive="active-link">
+    <a class="router-link" (click)="logout()" >
       <span class="text-item text-item-small" *ngIf="toggleState">Wyloguj</span>
       <span class="icon-item"> <i  class="fa fa-sign-out"></i> </span>
     </a>

@@ -12,7 +12,17 @@
 
   <div class="answers">
     <div class="row">
-      <div *ngFor="let answer of answers" class="answer-container">
+      <div *ngFor="let answer of answers.slice(0,4)" class="answer-container">
+        <div [@fadeAnimation]="false ? 'collapsed' : 'expanded' " class="card" *ngFor="let card of answer.cards; let last = last">
+          <div class="card-text" [innerHtml]="card.text">
+
+          </div>
+          <button *ngIf="last && chooseButtonsActive" (click)="chooseWinner(answer.owner)" class="chose-button" pButton label="ok"></button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let answer of answers.slice(4,8)" class="answer-container">
         <div [@fadeAnimation]="false ? 'collapsed' : 'expanded' " class="card" *ngFor="let card of answer.cards; let last = last">
           <div class="card-text" [innerHtml]="card.text">
 

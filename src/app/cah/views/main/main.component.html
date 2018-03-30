@@ -10,14 +10,11 @@
         <button *ngIf="createButtonState" pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>
         <button *ngIf="backButtonState" pButton (click)="switchView()" type="button" label="{{!viewState ? 'Pokoje':'Gra'}}" icon="{{ !viewState ? 'fa-arrow-left' : 'fa-arrow-right' }}"></button>
         <button *ngIf="leaveButtonState" pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>
-
       </div>
-      <div class="ui-g-12 ui-md-6">
         <div class="info">
-          <p>{{ roomTitle ? "Twój pokój: " + roomTitle: "" }}</p>
+          <p *ngIf="roomTitle">Twój pokój: <b>{{roomTitle}}</b></p>
           <p>{{ chooser ? "Odpowiedzi wybiera: " + chooser : "" }}</p>
         </div>
-      </div>
       <div class="ui-g-12 ui-g-nopad">
         <div class="ui-g">
           <div class="ui-g-12 ui-md-12">
@@ -27,7 +24,7 @@
           </div>
         </div>
 
-        <div class="ui-g">
+        <div class="ui-g" style="margin-top: -20px;">
           <div class="ui-g-12 ui-md-12">
             <div [@toggleAnimation]="viewState ? 'collapsed' : 'expanded'" class="game-window">
               <app-game-window></app-game-window>

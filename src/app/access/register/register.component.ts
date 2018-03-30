@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "../user.service";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/do';
+import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material";
+import {TranslateService} from "../../translate/translate.service";
 
 
 @Component({
@@ -12,7 +15,10 @@ import 'rxjs/add/operator/do';
 export class RegisterComponent implements OnInit {
 
   model: any = {};
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router,
+              private snackBar: MatSnackBar,
+              private translateService: TranslateService) { }
 
   ngOnInit() {
 
@@ -21,12 +27,10 @@ export class RegisterComponent implements OnInit {
   submit(): any {
     this.userService.create(this.model)
       .do((data)=>{},(err)=> {
-        console.log("Error");
-        return Observable.throw(err);
+        this.snackBar.open(this.translateService.instant("access/unable_to_register"), "info", {duration: 3000});
       })
       .subscribe((data)=>{
-        console.log("Success");
-        console.log(data);
+        this.router.navigate(['/login'], { queryParams: {registered: true} });
       });
   }
 

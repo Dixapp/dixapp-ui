@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'body',
+  host: {
+    "[style.backgroundColor]":"'whitesmoke'"
+  },
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

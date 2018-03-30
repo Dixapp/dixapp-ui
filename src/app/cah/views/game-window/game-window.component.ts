@@ -68,12 +68,12 @@ export class GameWindowComponent implements OnInit {
     if(this.choosingActive){
       if(this.indexOfSelection < this.toSelect){
         this.selectedCards[this.indexOfSelection++] = a;
-        if(this.indexOfSelection == this.toSelect) this.dixioService.sendAnswers(this.selectedCards);
       }
       else {
         this.indexOfSelection = 0;
         this.selectedCards[this.indexOfSelection++] = a;
       }
+      if(this.indexOfSelection == this.toSelect) this.dixioService.sendAnswers(this.selectedCards);
     }
   }
 

@@ -19,7 +19,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
 
     return next.handle(request).do((event: HttpEvent<any>)=>{}, (err: any) => {
-      console.log("error");
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
           window.location.href = '/login';
