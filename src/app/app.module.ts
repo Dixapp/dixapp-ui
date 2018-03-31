@@ -38,6 +38,8 @@ import { ImagesrcDirective } from './helpers/imagesrc.directive';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslationModule } from "./translate/translation.module";
+import { DataTableModule } from 'primeng/datatable';
+
 
 
 @NgModule({
@@ -74,7 +76,8 @@ import { TranslationModule } from "./translate/translation.module";
     HttpClientModule,
     MatSidenavModule,
     MatSnackBarModule,
-    TranslationModule
+    TranslationModule,
+    DataTableModule
   ],
   providers: [
     socketServiceProvider,

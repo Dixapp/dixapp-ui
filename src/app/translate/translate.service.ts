@@ -1,9 +1,10 @@
 import {Injectable, Inject} from '@angular/core';
-import { TRANSLATIONS } from './translation'; 
+import { TRANSLATIONS } from './translation';
 
 @Injectable()
 export class TranslateService {
     private _currentLang: string;
+    private counter: number = 0;
 
     public get currentLang() {
         return this._currentLang;
@@ -24,6 +25,8 @@ export class TranslateService {
 
     private translate(key: string): string {
         // private perform translation
+        // console.log(++this.counter);
+
         let translation = key;
         let data = key.split('/');
 
@@ -39,6 +42,6 @@ export class TranslateService {
 
     public instant(key: string) {
         // call translation
-        return this.translate(key); 
+        return this.translate(key);
     }
 }

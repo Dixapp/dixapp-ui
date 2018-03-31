@@ -8,3 +8,11 @@
   line-height: 1em;
 
 }
+
+.user-list {
+  word-wrap: break-word;
+}
+
+.join-button {
+  width: 100%;
+}
