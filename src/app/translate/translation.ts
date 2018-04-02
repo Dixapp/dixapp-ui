@@ -4,6 +4,7 @@ import { InjectionToken } from '@angular/core';
 import { LANG_PL_NAME, LANG_PL_TRANS } from './lang-pl';
 import { LANG_EN_NAME, LANG_EN_TRANS } from './lang-en';
 import { LANG_PL_TRANS_ACCESS } from '../access/translations/lang-pl';
+import { LANG_PL_TRANS_CAH } from "../cah/translations/lang-pl";
 
 
 // translation token
@@ -13,7 +14,8 @@ export const TRANSLATIONS = new InjectionToken<any>('translation');
 export const dictionary = {
     [LANG_PL_NAME]: {
         ['default']: LANG_PL_TRANS,
-        ['access']: LANG_PL_TRANS_ACCESS
+        ['access']: LANG_PL_TRANS_ACCESS,
+        ['cah']: LANG_PL_TRANS_CAH
     },
     [LANG_EN_NAME]: {
         ['default']: LANG_EN_TRANS

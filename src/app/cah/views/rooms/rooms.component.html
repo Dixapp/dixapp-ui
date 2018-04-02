@@ -3,11 +3,11 @@
     <!--Pokoje-->
   <!--</p-header>-->
   <!--<ng-template let-room pTemplate="item">-->
-    <!--<div class="ui-g ui-fluid car-item">-->
+    <!--<div class="ui-g ui-fluid room-item">-->
       <!--<div class="ui-g-12 ui-md-1" style="text-align:center;">-->
         <!--<i class="fa fa-gamepad" style="vertical-align: bottom; font-size: 42px;"></i>-->
       <!--</div>-->
-      <!--<div class="ui-g-12 ui-md-11 car-details">-->
+      <!--<div class="ui-g-12 ui-md-11 room-details">-->
         <!--<div class="ui-g">-->
           <!--<div class="ui-g-1 ui-sm-1">Nazwa: </div>-->
           <!--<div class="ui-g-3 ui-sm-1">{{room.title}}</div>-->
@@ -28,65 +28,96 @@
   <!--</ng-template>-->
 <!--</p-dataList>-->
 
-<p-dataTable [value]="rooms" expandableRows="true">
-  <p-column field="title" header="Nazwa"></p-column>
-  <p-column header="Właściciel" [style]="{'text-align':'center'}">
-    <ng-template let-room="rowData" pTemplate="body">
-      <b>{{room.owner}}</b>
-    </ng-template>
-  </p-column>
-  <p-column header="Dołącz">
-    <ng-template let-room="rowData" pTemplate="body">
-      <div>
-        <button *ngIf="!myRoom || myRoom.id !== room.id" pButton type="button" [disabled]="myRoom" (click)="joinToRoom(room.id)" class="join-button" label="Dołącz do gry" icon="fa-check"></button>
-        <button *ngIf="myRoom && myRoom.id === room.id" pButton [disabled]="true" type="button" class="join-button" label="Jesteś w tym pokoju" icon="fa-check"></button>
-      </div>
-    </ng-template>
-  </p-column>
-  <p-column header="Miejsca" [style]="{'width':'90px'}">
-    <ng-template let-room="rowData" pTemplate="body">
-      <b>{{ room.users.length }} / 8</b>
-    </ng-template>
-  </p-column>
-  <p-column expander="true" [style]="{'width':'40px'}"></p-column>
+<!--<p-dataTable [value]="rooms" expandableRows="true" emptyMessage="Nikt teraz nie gra">-->
+  <!--<p-column field="title" header="Nazwa"></p-column>-->
+  <!--<p-column header="Właściciel" [style]="{'text-align':'center'}">-->
+    <!--<ng-template let-room="rowData" pTemplate="body">-->
+      <!--<b>{{room.owner}}</b>-->
+    <!--</ng-template>-->
+  <!--</p-column>-->
+  <!--<p-column header="Dołącz">-->
+    <!--<ng-template let-room="rowData" pTemplate="body">-->
+      <!--<div>-->
+        <!--<button *ngIf="!myRoom || myRoom.id !== room.id" pButton type="button" [disabled]="myRoom" (click)="joinToRoom(room.id)" class="join-button" label="Dołącz do gry" icon="fa-check"></button>-->
+        <!--<button *ngIf="myRoom && myRoom.id === room.id" pButton [disabled]="true" type="button" class="join-button" label="Jesteś w tym pokoju" icon="fa-check"></button>-->
+      <!--</div>-->
+    <!--</ng-template>-->
+  <!--</p-column>-->
+  <!--<p-column header="Miejsca" [style]="{'width':'90px'}">-->
+    <!--<ng-template let-room="rowData" pTemplate="body">-->
+      <!--<b>{{ room.users.length }} / 8</b>-->
+    <!--</ng-template>-->
+  <!--</p-column>-->
+  <!--<p-column expander="true" [style]="{'width':'40px'}"></p-column>-->
 
-  <ng-template let-room pTemplate="rowexpansion">
-    <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-1" style="text-align:center;">
-        <i class="fa fa-gamepad" style="vertical-align: bottom; font-size: 42px;"></i>
-      </div>
-      <div class="ui-g-12 ui-md-11">
-        <div class="ui-g">
-          <div class="ui-g-1 ui-sm-1">Nazwa:</div>
-          <div class="ui-g-3 ui-sm-1">{{room.title}}</div>
-          <div class="ui-g-4 ui-sm-1 user-list">
-            <div>Użytkownicy</div>
-            <div>Użytkownicy</div>
+  <!--<ng-template let-room pTemplate="rowexpansion">-->
+    <!--<div class="ui-g ui-fluid">-->
+      <!--<div class="ui-g-12 ui-md-1" style="text-align:center;">-->
+        <!--<i class="fa fa-gamepad" style="vertical-align: bottom; font-size: 42px;"></i>-->
+      <!--</div>-->
+      <!--<div class="ui-g-12 ui-md-11">-->
+        <!--<div class="ui-g">-->
+          <!--<div class="ui-g-1 ui-sm-1">Nazwa:</div>-->
+          <!--<div class="ui-g-3 ui-sm-1">{{room.title}}</div>-->
+          <!--<div class="ui-g-4 ui-sm-1 user-list">-->
+            <!--<div>Użytkownicy</div>-->
+            <!--<div>Użytkownicy</div>-->
 
-            <div>Użytkownicy</div>
-            <div>Użytkownicy</div>
-            <div>Użytkownicy</div>
-            <div>Użytkownicy</div>
-            <div>Użytkownicy</div>
-            <div>Użytkownicy</div>
-            <div>Użytkownicy</div>
+            <!--<div>Użytkownicy</div>-->
+            <!--<div>Użytkownicy</div>-->
+            <!--<div>Użytkownicy</div>-->
+            <!--<div>Użytkownicy</div>-->
+            <!--<div>Użytkownicy</div>-->
+            <!--<div>Użytkownicy</div>-->
+            <!--<div>Użytkownicy</div>-->
 
-          </div>
-          <div class="ui-g-4 ui-sm-6">
-            <button *ngIf="!myRoom || myRoom.id !== room.id" pButton type="button" (click)="joinToRoom(room.id)"
-                    label="Dołącz do gry" icon="fa-check"></button>
-            <button *ngIf="myRoom && myRoom.id === room.id" pButton [disabled]="true" type="button"
-                    label="Jesteś w tym pokoju" icon="fa-check"></button>
-          </div>
-        </div>
+          <!--</div>-->
+          <!--<div class="ui-g-4 ui-sm-6">-->
+            <!--<button *ngIf="!myRoom || myRoom.id !== room.id" pButton type="button" (click)="joinToRoom(room.id)"-->
+                    <!--label="Dołącz do gry" icon="fa-check"></button>-->
+            <!--<button *ngIf="myRoom && myRoom.id === room.id" pButton [disabled]="true" type="button"-->
+                    <!--label="Jesteś w tym pokoju" icon="fa-check"></button>-->
+          <!--</div>-->
+        <!--</div>-->
 
-        <div class="ui-g">
-          <div class="ui-g-1 ui-sm-6">Miejsca:</div>
-          <div class="ui-g-3 ui-sm-6">{{room.users.length}} / 8</div>
-        </div>
+        <!--<div class="ui-g">-->
+          <!--<div class="ui-g-1 ui-sm-6">Miejsca:</div>-->
+          <!--<div class="ui-g-3 ui-sm-6">{{room.users.length}} / 8</div>-->
+        <!--</div>-->
 
-      </div>
-    </div>
+      <!--</div>-->
+    <!--</div>-->
+  <!--</ng-template>-->
+<!--</p-dataTable>-->
+
+<p-table [value]="rooms" dataKey="title">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>{{ 'cah/title' | translate }}</th>
+      <th>{{ 'cah/owner' | translate }}</th>
+      <th>{{ 'cah/seats' | translate }}</th>
+      <th>{{ 'cah/join' | translate }}</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-room>
+    <tr>
+      <td>{{room.title}}</td>
+      <td>{{room.owner}}</td>
+      <td>{{room.users.length}} / 8</td>
+      <td>
+        <button *ngIf="!myRoom || myRoom.id !== room.id" pButton type="button" (click)="joinToRoom(room.id)"
+        label="{{ 'cah/joinToGame' | translate }}" icon="fa-check"></button>
+        <button *ngIf="myRoom && myRoom.id === room.id" pButton [disabled]="true" type="button"
+        label="{{ 'cah/youAreAlreadyInGame' | translate }}" icon="fa-check"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="4">
+        Ni ma
+      </td>
+    </tr>
   </ng-template>
 
-</p-dataTable>
+</p-table>
