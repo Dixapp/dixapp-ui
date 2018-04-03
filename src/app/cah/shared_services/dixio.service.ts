@@ -82,7 +82,6 @@ export class DixioService {
   }
 
   sendAnswers(data) {
-    console.log("Sending answers");
     this.socket.emit('chosen_cards', data);
   }
 

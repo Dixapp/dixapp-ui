@@ -41,6 +41,7 @@ export class ChatComponent implements OnInit {
         this.activeTab = room ? 1 : 0;
         this.roomChatActive = !!room;
         this.messagesLocal = [];
+        this.scores = {};
     });
 
     combineLatest(this.dixioService.stage, this.dixioService.room).subscribe(([stage, room])=>{

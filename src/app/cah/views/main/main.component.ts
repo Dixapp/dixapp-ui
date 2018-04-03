@@ -42,6 +42,7 @@ export class MainComponent implements OnInit, OnDestroy {
         this.leaveButtonState = true;
       } else {
         this.roomTitle = "";
+        this.chooser = "";
         this.backButtonState = false;
         this.createButtonState = true;
         this.viewState = true;
@@ -50,8 +51,10 @@ export class MainComponent implements OnInit, OnDestroy {
     });
     this.dixioService.chooser.subscribe((chooser)=>{
       this.chooser = chooser;
-      console.log(chooser);
     });
+    this.dixioService.stage.subscribe((stage)=>{
+      this.chooser = stage === 0 ? "" : this.chooser;
+    })
   }
 
   ngOnDestroy(): void {

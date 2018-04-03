@@ -12,8 +12,10 @@
         <button *ngIf="leaveButtonState" pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>
       </div>
         <div class="info">
-          <p *ngIf="roomTitle">Twój pokój: <b>{{roomTitle}}</b></p>
-          <p>{{ chooser ? "Odpowiedzi wybiera: " + chooser : "" }}</p>
+          <p *ngIf="roomTitle">
+            <span>Twój pokój: <b>{{roomTitle}}</b></span>
+            <span *ngIf="chooser" style="padding-left: 10px;"> Odpowiedzi wybiera: <b>{{chooser}}</b></span>
+          </p>
         </div>
       <div class="ui-g-12 ui-g-nopad">
         <div class="ui-g">
