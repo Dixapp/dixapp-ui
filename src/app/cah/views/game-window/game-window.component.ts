@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import { DixioService } from "../../shared_services/dixio.service";
+import { CahService } from "../../shared_services/cah.service";
 import { UserService } from "../../../access/user.service";
 import {combineLatest} from "rxjs/observable/combineLatest";
 
@@ -34,24 +34,27 @@ export class GameWindowComponent implements OnInit {
   chooseButtonsActive: boolean = false;
   chooser: any = "";
 
-  constructor(private dixioService: DixioService, private  userService: UserService) { }
+  constructor(private cahService: CahService, private  userService: UserService) { }
 
   ngOnInit() {
 
-    this.dixioService.hand.subscribe((cards)=> this.cards = cards);
+    this.cahService.hand.subscribe((cards)=> this.cards = cards);
 
-    this.dixioService.question.subscribe((question) => {
+    this.cahService.question.subscribe((question) => {
       this.question = question;
       this.toSelect = question.numAnswers;
+      var msg = new SpeechSynthesisUtterance(question.text);
+      msg.lang = "en-US";
+      window.speechSynthesis.speak(msg);
     });
 
-    this.dixioService.answers.subscribe((answers)=> this.answers = answers);
+    this.cahService.answers.subscribe((answers)=> this.answers = answers);
 
-    combineLatest(this.dixioService.stage, this.dixioService.chooser).subscribe(([stage, chooser])=>{
+    combineLatest(this.cahService.stage, this.cahService.chooser).subscribe(([stage, chooser])=>{
       this.chooseButtonsActive = stage === 3 && chooser === this.userService.userData.user;
     });
 
-    combineLatest(this.dixioService.room, this.dixioService.stage, this.dixioService.chooser).subscribe(([room, stage, chooser])=>{
+    combineLatest(this.cahService.room, this.cahService.stage, this.cahService.chooser).subscribe(([room, stage, chooser])=>{
       this.choosingActive = room && room.users.length >= 2 && stage === 2 && this.userService.userData.user !== chooser;
       if(stage === 1) this.answers = [];
       if(stage === 0 || !room) {
@@ -73,12 +76,12 @@ export class GameWindowComponent implements OnInit {
         this.indexOfSelection = 0;
         this.selectedCards[this.indexOfSelection++] = a;
       }
-      if(this.indexOfSelection == this.toSelect) this.dixioService.sendAnswers(this.selectedCards);
+      if(this.indexOfSelection == this.toSelect) this.cahService.sendAnswers(this.selectedCards);
     }
   }
 
   chooseWinner(a: any){
-    this.dixioService.pickWinner(a);
+    this.cahService.pickWinner(a);
   }
 
 

@@ -13,7 +13,7 @@ import { FormsModule } from "@angular/forms";
 import { MatInputModule } from '@angular/material/input';
 import { MessagesModule } from 'primeng/messages';
 import { DialogModule } from "primeng/dialog";
-import { DixioService } from "./shared_services/dixio.service";
+import { CahService } from "./shared_services/cah.service";
 import { socketServiceProvider } from "../helpers/socket.service";
 import { TableModule } from "primeng/table";
 import { TranslationModule } from "../translate/translation.module";
@@ -40,7 +40,7 @@ import { TranslationModule } from "../translate/translation.module";
     RoomsDialogComponent
   ],
   providers: [
-    DixioService,
+    CahService,
     socketServiceProvider
   ]
 })

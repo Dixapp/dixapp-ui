@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { SocketService, socketServiceFactory } from "../../../helpers/socket.service";
 import { MessageService } from "primeng/components/common/messageservice";
 import { UserService } from "../../../access/user.service";
-import { DixioService } from "../../shared_services/dixio.service";
+import { CahService } from "../../shared_services/cah.service";
 import { trigger, state, transition, animate, style } from "@angular/animations";
 import { RoomsDialogComponent } from "../rooms-dialog/rooms-dialog.component";
 
@@ -28,12 +28,12 @@ export class MainComponent implements OnInit, OnDestroy {
   socket: SocketService;
   roomTitle: any = "";
   chooser: any = "";
-  constructor(private messageService: MessageService, private dixioService: DixioService) { }
+  constructor(private messageService: MessageService, private cahService: CahService) { }
 
   ngOnInit() {
-    this.dixioService.connectIfNeeded();
-    this.socket = this.dixioService.socket;
-    this.dixioService.room.subscribe((room)=> {
+    this.cahService.connectIfNeeded();
+    this.socket = this.cahService.socket;
+    this.cahService.room.subscribe((room)=> {
       if(room){
         this.roomTitle = room.title;
         this.backButtonState = true;
@@ -49,16 +49,16 @@ export class MainComponent implements OnInit, OnDestroy {
         this.leaveButtonState = false;
       }
     });
-    this.dixioService.chooser.subscribe((chooser)=>{
+    this.cahService.chooser.subscribe((chooser)=>{
       this.chooser = chooser;
     });
-    this.dixioService.stage.subscribe((stage)=>{
+    this.cahService.stage.subscribe((stage)=>{
       this.chooser = stage === 0 ? "" : this.chooser;
     })
   }
 
   ngOnDestroy(): void {
-    this.dixioService.socket.disconnect();
+    this.cahService.socket.disconnect();
   }
 
   openDialog(){
@@ -71,7 +71,7 @@ export class MainComponent implements OnInit, OnDestroy {
   leaveButtonState: boolean = false;
 
   leaveRoom(): void {
-    this.dixioService.leaveRoom();
+    this.cahService.leaveRoom();
   }
 
   switchView() {

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import { DixioService } from "../../shared_services/dixio.service";
+import { CahService } from "../../shared_services/cah.service";
 import { merge } from 'rxjs/observable/merge';
 import { combineLatest } from "rxjs/observable/combineLatest";
 import {UserService} from "../../../access/user.service";
@@ -25,18 +25,18 @@ export class ChatComponent implements OnInit {
   owner: any = "";
   startButtonActive: boolean = true;
 
-  constructor(private dixioService: DixioService, private userService: UserService) { }
+  constructor(private cahService: CahService, private userService: UserService) { }
 
   ngOnInit() {
     let self = this;
 
-    this.dixioService.globalMsg.subscribe((msg)=> self.addMsg(msg.owner + ': ' +msg.msg));
+    this.cahService.globalMsg.subscribe((msg)=> self.addMsg(msg.owner + ': ' +msg.msg));
 
-    this.dixioService.localMsg.subscribe((msg)=> {
+    this.cahService.localMsg.subscribe((msg)=> {
       self.addMsgLocal(msg.owner + ': ' +msg.msg);
     });
 
-    this.dixioService.room.subscribe((room)=> {
+    this.cahService.room.subscribe((room)=> {
         self.userList = room ? room.users : [];
         this.activeTab = room ? 1 : 0;
         this.roomChatActive = !!room;
@@ -44,11 +44,11 @@ export class ChatComponent implements OnInit {
         this.scores = {};
     });
 
-    combineLatest(this.dixioService.stage, this.dixioService.room).subscribe(([stage, room])=>{
+    combineLatest(this.cahService.stage, this.cahService.room).subscribe(([stage, room])=>{
       this.startButtonActive = (room && this.userService.userData.user == room.owner && stage === 0 && room.users.length >= 2);
     });
 
-    this.dixioService.scores.subscribe((scores)=>{
+    this.cahService.scores.subscribe((scores)=>{
       this.scores = scores;
     });
 
@@ -72,20 +72,20 @@ export class ChatComponent implements OnInit {
 
   sendGlobalMessage(e) {
     if(e[e.length - 1] == '\n'){
-      this.dixioService.sendGlobalChatMessage(this.textAreaMsgGlobal.slice(0,-1));
+      this.cahService.sendGlobalChatMessage(this.textAreaMsgGlobal.slice(0,-1));
       this.textAreaMsgGlobal = "";
     }
   }
 
   sendLocalMessage(e) {
     if(e[e.length - 1] == '\n'){
-      this.dixioService.sendLocalChatMessage(this.textAreaMsgLocal.slice(0,-1));
+      this.cahService.sendLocalChatMessage(this.textAreaMsgLocal.slice(0,-1));
       this.textAreaMsgLocal = "";
     }
   }
 
   startGame() {
-    this.dixioService.startGame();
+    this.cahService.startGame();
   }
 
 }

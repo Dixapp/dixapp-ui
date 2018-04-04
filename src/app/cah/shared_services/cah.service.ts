@@ -6,7 +6,7 @@ import { MatSnackBar } from "@angular/material";
 
 
 @Injectable()
-export class DixioService {
+export class CahService {
 
   socket: SocketService;
   room: Subject<any> = new Subject<any>();
