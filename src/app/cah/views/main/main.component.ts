@@ -54,7 +54,8 @@ export class MainComponent implements OnInit, OnDestroy {
     });
     this.cahService.stage.subscribe((stage)=>{
       this.chooser = stage === 0 ? "" : this.chooser;
-    })
+    });
+
   }
 
   ngOnDestroy(): void {
