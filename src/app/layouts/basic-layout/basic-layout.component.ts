@@ -49,10 +49,8 @@ export class BasicLayoutComponent {
               private router: Router,
               private http: HttpClient) { }
 
+  toggleState: boolean = false;
 
-
-
-  toggleState: boolean = true;
   toggleStateB(){
     this.toggleState = !this.toggleState;
   }

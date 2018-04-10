@@ -3,3 +3,12 @@ body {
   background-color: #888888;
 }
 
+.chat-tabs {
+  font-size: 0.8em !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .chat-tabs {
+    font-size: 0.6em !important;
+  }
+}

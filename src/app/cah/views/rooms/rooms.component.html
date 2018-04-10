@@ -90,7 +90,10 @@
   <!--</ng-template>-->
 <!--</p-dataTable>-->
 
-<p-table [value]="rooms" [paginator]="true" [rows]="10" dataKey="title">
+<p-table [value]="rooms" [paginator]="true" [rows]="10" [responsive]="true" dataKey="title">
+  <ng-template pTemplate="caption">
+    Pokoje
+  </ng-template>
   <ng-template pTemplate="header">
     <tr>
       <th>{{ 'cah/title' | translate }}</th>

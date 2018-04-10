@@ -1,15 +1,9 @@
-p {
-  font-size: 20px;
-  line-height: 1em;
-  word-wrap: break-word;
-}
 
 .chat-card {
   margin: 5px;
   font-size: 13px;
   line-height: 1em;
-
-  height:800px;
+  height: 700px;
   border:solid 1px #D4D4D4;
   overflow-y:auto;
 }
@@ -18,8 +12,7 @@ p {
   margin: 5px;
   font-size: 13px;
   line-height: 1em;
-
-  height:400px;
+  height: 600px;
   border:solid 1px #D4D4D4;
   overflow-y:auto;
 }
@@ -51,8 +44,15 @@ p {
   border: solid 1px #D4D4D4;
   height: 50px;
   margin: 5px;
-
 }
 
+@media only screen and (max-width: 600px) {
+  .chat-card {
+    height: 200px;
+  }
+  .chat-card-local {
+    height: 200px;
+  }
+}
 
 

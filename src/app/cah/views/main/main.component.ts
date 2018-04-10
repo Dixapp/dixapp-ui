@@ -77,6 +77,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   switchView() {
     this.viewState = !this.viewState;
+    console.log(this.viewState);
   }
 
 

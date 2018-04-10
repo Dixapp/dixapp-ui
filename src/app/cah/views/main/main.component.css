@@ -23,8 +23,8 @@
 }
 
 .main {
-  margin-right: 350px; /* Same as the width of the sidenav */
-  padding-right: 10px;
+  /*margin-right: 350px; !* Same as the width of the sidenav *!*/
+  /*padding-right: 10px;*/
 }
 
 .game-window {
@@ -93,4 +93,18 @@
   padding: 5px;
   z-index: -100;
   /*margin-top: -10px;*/
+}
+
+button {
+  width: 100%;
+}
+
+.button-row {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.col-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

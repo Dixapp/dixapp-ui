@@ -17,6 +17,8 @@ import { CahService } from "./shared_services/cah.service";
 import { socketServiceProvider } from "../helpers/socket.service";
 import { TableModule } from "primeng/table";
 import { TranslationModule } from "../translate/translation.module";
+import { TabViewModule } from 'primeng/tabview';
+
 
 @NgModule({
   imports: [
@@ -30,7 +32,8 @@ import { TranslationModule } from "../translate/translation.module";
     MatInputModule,
     MessagesModule,
     DialogModule,
-    TranslationModule
+    TranslationModule,
+    TabViewModule
   ],
   declarations: [
     ChatComponent,
