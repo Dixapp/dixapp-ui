@@ -28,10 +28,10 @@
 }
 
 .game-window {
-  overflow: hidden;
-  /*border:1px solid black;*/
-  border-radius: 2px;
-  background-color: #D4D4D4;
+  /*overflow: hidden;*/
+  /*!*border:1px solid black;*!*/
+  /*border-radius: 2px;*/
+  /*background-color: #D4D4D4;*/
 }
 
 
