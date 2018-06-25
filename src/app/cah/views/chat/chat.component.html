@@ -1,72 +1,6 @@
-<!--<mat-tab-group [selectedIndex]="activeTab" [dynamicHeight]="true">-->
-
-
-  <!--<mat-tab label="Main chat">-->
-    <!--<div class="tab-panel">-->
-
-      <!--<div #chatWindow class="chat-card">-->
-        <!--<div>-->
-          <!--<p *ngFor="let msg of messages; let last = last">-->
-            <!--{{ msg }}-->
-            <!--<br>-->
-            <!--<span *ngIf="last">{{scroll()}}</span>-->
-          <!--</p>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<form>-->
-        <!--<mat-form-field style="width: 100%;">-->
-          <!--<textarea matInput [(ngModel)]="textAreaMsgGlobal" name="textAreaMsgGlobal" (input)="sendGlobalMessage($event.target.value)" style="font-size: 16px;" placeholder="Leave a comment"></textarea>-->
-        <!--</mat-form-field>-->
-      <!--</form>-->
-
-    <!--</div>-->
-  <!--</mat-tab>-->
-
-
-  <!--<mat-tab *ngIf="!roomChatActive" label="Room chat" disabled></mat-tab>-->
-
-
-
-
-  <!--<mat-tab *ngIf="roomChatActive" label="Room chat">-->
-
-    <!--<div class="setup-panel">-->
-      <!--<button [disabled]="!startButtonActive" pButton (click)="startGame()" label="Start" style="margin: 5px"></button>-->
-    <!--</div>-->
-
-    <!--<div class="user-list">-->
-      <!--<div *ngFor="let user of userList" class="user-item" data-toggle="tooltip" title="{{user}}">-->
-        <!--<i class="fa fa-user"></i><span> {{ user }} </span>-->
-        <!--<span class="score" *ngIf="scores[user]"> {{ scores[user] }} </span>-->
-        <!--<span class="score" *ngIf="!scores[user]"> 0 </span>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<div #localChatWindow class="chat-card-local">-->
-      <!--<div>-->
-        <!--<p *ngFor="let msg of messagesLocal; let last = last">-->
-          <!--{{ msg }}-->
-          <!--<br>-->
-          <!--<span *ngIf="last">{{scrollLocal()}}</span>-->
-        <!--</p>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<form>-->
-      <!--<mat-form-field style="width: 100%;">-->
-        <!--<textarea matInput [(ngModel)]="textAreaMsgLocal" name="textAreaMsgLocal" (input)="sendLocalMessage($event.target.value)" style="font-size: 16px;" placeholder="Leave a comment"></textarea>-->
-      <!--</mat-form-field>-->
-    <!--</form>-->
-
-
-  <!--</mat-tab>-->
-
-<!--</mat-tab-group>-->
-
 
 <p-tabView [styleClass]="'chat-tabs'">
-  <p-tabPanel header="cah/global_chat">
+  <p-tabPanel headerStyleClass="chat-tab-header" header="{{'cah/global_chat' | translate}}">
 
     <div class="tab-panel">
 
@@ -80,23 +14,24 @@
         </div>
       </div>
 
-      <form>
-        <mat-form-field style="width: 100%;">
+      <div class="chat-form">
+        <form>
+          <mat-form-field style="width: 100%;">
           <textarea matInput [(ngModel)]="textAreaMsgGlobal" name="textAreaMsgGlobal"
                     (input)="sendGlobalMessage($event.target.value)" style="font-size: 16px;"
                     placeholder="Leave a comment"></textarea>
-        </mat-form-field>
-      </form>
+          </mat-form-field>
+        </form>
+      </div>
 
     </div>
 
 
   </p-tabPanel>
-  <p-tabPanel header="cah/room_chat">
+  <p-tabPanel headerStyleClass="chat-tab-header" header="{{'cah/local_chat' | translate}}">
     <div class="tab-panel">
       <div class="setup-panel">
-        <button [disabled]="!startButtonActive" pButton (click)="startGame()" label="Start"
-                style="margin: 5px"></button>
+        <button [disabled]="!startButtonActive" pButton (click)="startGame()" label="Start" class="start-button"></button>
       </div>
 
       <div class="user-list">
@@ -107,7 +42,7 @@
         </div>
       </div>
 
-      <div #localChatWindow class="chat-card-local">
+      <div #localChatWindow class="chat-card">
         <div>
           <p *ngFor="let msg of messagesLocal; let last = last">
             {{ msg }}
@@ -117,13 +52,17 @@
         </div>
       </div>
 
-      <form>
-        <mat-form-field style="width: 100%;">
-        <textarea matInput [(ngModel)]="textAreaMsgLocal" name="textAreaMsgLocal"
+      <div>
+        <form class="chat-form">
+          <mat-form-field style="width: 100%;">
+            <textarea matInput [(ngModel)]="textAreaMsgLocal" name="textAreaMsgLocal"
                   (input)="sendLocalMessage($event.target.value)" style="font-size: 16px;"
-                  placeholder="Leave a comment"></textarea>
-        </mat-form-field>
-      </form>
+                  placeholder="Leave a comment">
+            </textarea>
+          </mat-form-field>
+        </form>
+      </div>
+
     </div>
   </p-tabPanel>
 

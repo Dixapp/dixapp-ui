@@ -1,92 +1,19 @@
-<!--<p-growl></p-growl>-->
 
 <app-rooms-dialog #dialog></app-rooms-dialog>
 
-<!--<div class="main">-->
-
-  <!--<div class="ui-g">-->
-    <!--<div class="ui-g-12 ui-md-12 ui-g-nopad">-->
-      <!--<div class="ui-g-12 ui-md-6">-->
-        <!--<button *ngIf="createButtonState" pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>-->
-        <!--<button *ngIf="backButtonState" pButton (click)="switchView()" type="button" label="{{!viewState ? 'Pokoje':'Gra'}}" icon="{{ !viewState ? 'fa-arrow-left' : 'fa-arrow-right' }}"></button>-->
-        <!--<button *ngIf="leaveButtonState" pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>-->
-      <!--</div>-->
-        <!--&lt;!&ndash;<div class="info">&ndash;&gt;-->
-          <!--&lt;!&ndash;<p *ngIf="roomTitle">&ndash;&gt;-->
-            <!--&lt;!&ndash;<span>Twój pokój: <b>{{roomTitle}}</b></span>&ndash;&gt;-->
-            <!--&lt;!&ndash;<span *ngIf="chooser" style="padding-left: 10px;"> Odpowiedzi wybiera: <b>{{chooser}}</b></span>&ndash;&gt;-->
-          <!--&lt;!&ndash;</p>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <!--<div class="ui-g-12 ui-g-nopad">-->
-        <!--<div class="ui-g">-->
-          <!--<div class="ui-g-12 ui-md-12">-->
-            <!--<div [@toggleAnimation]="viewState ? 'expanded' : 'collapsed'" class="room-container">-->
-              <!--<app-rooms> </app-rooms>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="ui-g" style="margin-top: -20px;">-->
-          <!--<div class="ui-g-12 ui-md-12">-->
-            <!--<div [@toggleAnimation]="viewState ? 'collapsed' : 'expanded'" class="game-window">-->
-              <!--<app-game-window></app-game-window>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-
-
-        <!--&lt;!&ndash;<div class="ui-g room-container">&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="ui-g-6 ui-md-3">XD</div>&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="ui-g-6 ui-md-3">XD</div>&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="ui-g-6 ui-md-3">XD</div>&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="ui-g-6 ui-md-3">XD</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<div class="ui-g">&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="ui-g-12 ui-md-6">Phasellus faucibus purus volutpat mauris lacinia sodales. Ut sit amet sapien facilisis, commodo dui non, fringilla tellus. Quisque tempus facilisis nisi sodales finibus. Pellentesque neque orci, ullamcorper vitae ligula quis, dignissim euismod augue.</div>&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="ui-g-12 ui-md-6">Fusce ullamcorper congue massa, eget ullamcorper nunc lobortis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultrices dui eget dolor feugiat dapibus. Aliquam pretium leo et egestas luctus. Nunc facilisis gravida tellus.</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="ui-g-12">-->
-      <!--<p-messages></p-messages>-->
-    <!--</div>-->
-
-    <!--&lt;!&ndash;<div class="ui-g-12">&ndash;&gt;-->
-      <!--&lt;!&ndash;<div class="flip-container" ontouchstart="this.classList.toggle('hover');">&ndash;&gt;-->
-        <!--&lt;!&ndash;<div class="flipper">&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="front">&ndash;&gt;-->
-            <!--&lt;!&ndash;XDDD&ndash;&gt;-->
-          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-          <!--&lt;!&ndash;<div class="back">&ndash;&gt;-->
-            <!--&lt;!&ndash;SMUTEG&ndash;&gt;-->
-          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-
-
-  <!--</div>-->
-
-<!--</div>-->
-
-
-<div class="container-fluid">
-  <div class="rooms">
+<div class="container-fluid rooms">
     <div class="row button-row">
-      <div *ngIf="createButtonState" class="col-sm-4 col-lg-4">
+      <div *ngIf="createButtonState" class="col-sm-4 col-lg-2">
         <div class="col-item">
           <button  pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>
         </div>
       </div>
-      <div *ngIf="backButtonState" class="col-sm-4 col-lg-4">
+      <div *ngIf="backButtonState" class="col-sm-4 col-lg-2">
         <div class="col-item">
           <button  pButton (click)="switchView()" type="button" label="{{!viewState ? 'Pokoje':'Gra'}}" icon="{{ !viewState ? 'fa-arrow-left' : 'fa-arrow-right' }}"></button>
         </div>
       </div>
-      <div *ngIf="leaveButtonState" class="col-sm-4 col-lg-4">
+      <div *ngIf="leaveButtonState" class="col-sm-4 col-lg-2">
         <div class="col-item">
           <button  pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>
         </div>
@@ -94,28 +21,15 @@
     </div>
     <div class="row">
       <div class="col-sm-9">
-        <div class="h-100 col-item">
-          <!--<div [@toggleAnimation]="viewState ? 'expanded' : 'collapsed'">-->
-            <!--<app-rooms> </app-rooms>-->
-          <!--</div>-->
-          <div [@toggleAnimation]="viewState ? 'expanded' : 'collapsed'" class="room-container">
+          <div [ngClass]="!viewState ? 'my-hidden' : '' " class="room-container">
             <app-rooms> </app-rooms>
           </div>
-          <div [@toggleAnimation]="viewState ? 'collapsed' : 'expanded'" class="game-window">
+          <div [ngClass]="viewState ? 'my-hidden' : '' " class="game-window">
             <app-game-window></app-game-window>
           </div>
-        </div>
       </div>
       <div class="col-sm-3">
-        <div class="h-100 col-item">
           <app-chat></app-chat>
-        </div>
       </div>
     </div>
-  </div>
 </div>
-
-
-<!--<div class="sidenav">-->
-  <!--<app-chat></app-chat>-->
-<!--</div>-->

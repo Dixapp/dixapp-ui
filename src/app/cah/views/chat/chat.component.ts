@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit {
   scores: any = {};
   roomChatActive: boolean = false;
   owner: any = "";
-  startButtonActive: boolean = true;
+  startButtonActive: boolean = false;
 
   constructor(private cahService: CahService, private userService: UserService) { }
 

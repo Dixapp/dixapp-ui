@@ -1,24 +1,40 @@
+.game-window {
+  height: 800px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  background-color: #D4D4D4;
+  transition: 0.5s;
+}
+
+.header {
+  border: 2px solid black;
+  border-radius: 6px;
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 50px;
+  position: relative;
+  display: block;
+  float: left;
+  width: 66%;
+}
+
+.header:hover {
+  background-color: #888888;
+}
+
 .hand {
   height: 700px;
   width: 250px;
-  position: absolute;
-  right: 0px;
+  position: relative;
+  float: right;
 }
-
-
 
 .hand-container {
   position: relative;
   margin: 50px;
   float: right;
-}
-
-.game-window {
-  /*height: 875px;*/
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: #D4D4D4;
 }
 
 .card {
@@ -39,21 +55,6 @@
 
 }
 
-.header {
-  border: 2px solid black;
-  border-radius: 6px;
-  /*width: 300px;*/
-  height: 200px;
-  margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 300px;
-}
-
-.header:hover {
-  background-color: #888888;
-}
-
-
 .answers {
   position: absolute;
   bottom: 0;
@@ -61,8 +62,12 @@
   width: calc(100% - 350px);
   height: 65%;
   margin: 20px;
+}
 
-
+.answer-container {
+  position: relative;
+  margin: 10px;
+  float: right;
 }
 
 .row {
@@ -70,12 +75,6 @@
   height: 330px;
   /*overflow: hidden;*/
   width:100%;
-}
-
-.answer-container {
-  position: relative;
-  margin: 10px;
-  float: right;
 }
 
 .chose-button {
@@ -90,7 +89,7 @@
 
   .game-window {
     padding: 5px;
-    /*height: auto;*/
+    height: auto;
   }
 
   .header {

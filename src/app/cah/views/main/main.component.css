@@ -1,5 +1,18 @@
 .room-container {
   overflow: hidden;
+  transition: 0.5s;
+  height: 800px;
+}
+
+.game-window {
+  overflow: hidden;
+  transition: 0.5s;
+  height: 800px;
+}
+
+.my-hidden {
+  height: 0;
+  transition: 0.5s;
 }
 
 .chat-card {
@@ -27,12 +40,7 @@
   /*padding-right: 10px;*/
 }
 
-.game-window {
-  /*overflow: hidden;*/
-  /*!*border:1px solid black;*!*/
-  /*border-radius: 2px;*/
-  /*background-color: #D4D4D4;*/
-}
+
 
 
 .flip-container {
@@ -107,4 +115,20 @@ button {
 .col-item {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .room-container {
+    overflow: auto;
+    height: auto;
+  }
+
+  .game-window {
+    overflow: auto;
+    height: auto;
+  }
+
+  .my-hidden {
+    height: 0;
+  }
 }

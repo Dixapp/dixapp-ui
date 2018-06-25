@@ -4,7 +4,19 @@ body {
 }
 
 .chat-tabs {
+  white-space-collapsing: discard;
   font-size: 0.8em !important;
+}
+
+.chat-tab-header {
+  color: black !important;
+  display: inline-block;
+  width: 50%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;;
+  padding-left: 0 !important;;
+  padding-right: 0 !important;;
+  text-align: center !important;
 }
 
 @media only screen and (max-width: 600px) {

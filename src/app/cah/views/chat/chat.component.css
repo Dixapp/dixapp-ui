@@ -1,26 +1,34 @@
 
+.chat-tabs {
+  white-space-collapsing:discard;
+}
+
+.start-button {
+  width: 100%;
+}
+
+.tab-panel {
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+  height: 800px;
+}
+
+.chat-form {
+  flex: 0 1 40px;
+}
+
 .chat-card {
   margin: 5px;
   font-size: 13px;
   line-height: 1em;
-  height: 700px;
   border:solid 1px #D4D4D4;
   overflow-y:auto;
-}
-
-.chat-card-local {
-  margin: 5px;
-  font-size: 13px;
-  line-height: 1em;
-  height: 600px;
-  border:solid 1px #D4D4D4;
-  overflow-y:auto;
+  flex: 1 1 auto;
 }
 
 .user-list {
-  /*border: solid 1px #D4D4D4;*/
   margin: 5px;
-  /*height: 300px;*/
   position: relative;
 }
 
@@ -28,7 +36,6 @@
   position: relative;
   width: 100%;
   padding: 5px;
-  /*margin: 2px;*/
   border: solid 1px #D4D4D4;
   font-size: 15px;
   margin-bottom: 5px;
@@ -42,17 +49,8 @@
 
 .setup-panel {
   border: solid 1px #D4D4D4;
-  height: 50px;
   margin: 5px;
 }
 
-@media only screen and (max-width: 600px) {
-  .chat-card {
-    height: 200px;
-  }
-  .chat-card-local {
-    height: 200px;
-  }
-}
 
 
