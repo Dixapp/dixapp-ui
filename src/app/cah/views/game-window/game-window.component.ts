@@ -68,7 +68,7 @@ export class GameWindowComponent implements OnInit {
   }
 
   onSelect(a: any) {
-    if(this.choosingActive){
+    if(this.choosingActive && this.selectedCards.indexOf(a) < 0){
       if(this.indexOfSelection < this.toSelect){
         this.selectedCards[this.indexOfSelection++] = a;
       }

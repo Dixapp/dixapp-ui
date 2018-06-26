@@ -1,35 +1,28 @@
 
 <app-rooms-dialog #dialog></app-rooms-dialog>
 
-<div class="container-fluid rooms">
-    <div class="row button-row">
-      <div *ngIf="createButtonState" class="col-sm-4 col-lg-2">
-        <div class="col-item">
+<div class="flex-view">
+  <div class="main-view">
+    <div class="control-buttons">
+      <div *ngIf="createButtonState" class="create-button">
           <button  pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>
-        </div>
       </div>
-      <div *ngIf="backButtonState" class="col-sm-4 col-lg-2">
-        <div class="col-item">
+      <div *ngIf="backButtonState" class="back-button">
           <button  pButton (click)="switchView()" type="button" label="{{!viewState ? 'Pokoje':'Gra'}}" icon="{{ !viewState ? 'fa-arrow-left' : 'fa-arrow-right' }}"></button>
-        </div>
       </div>
-      <div *ngIf="leaveButtonState" class="col-sm-4 col-lg-2">
-        <div class="col-item">
+      <div *ngIf="leaveButtonState" class="leave-button">
           <button  pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>
-        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-9">
-          <div [ngClass]="!viewState ? 'my-hidden' : '' " class="room-container">
-            <app-rooms> </app-rooms>
-          </div>
-          <div [ngClass]="viewState ? 'my-hidden' : '' " class="game-window">
-            <app-game-window></app-game-window>
-          </div>
-      </div>
-      <div class="col-sm-3">
-          <app-chat></app-chat>
-      </div>
+
+    <div [ngClass]="!viewState ? 'my-hidden' : '' " class="room-container">
+      <app-rooms> </app-rooms>
     </div>
+    <div [ngClass]="viewState ? 'my-hidden' : '' " class="game-window">
+      <app-game-window></app-game-window>
+    </div>
+  </div>
+  <div class="chat-view">
+    <app-chat></app-chat>
+  </div>
 </div>
