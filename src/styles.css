@@ -4,8 +4,8 @@ body {
 }
 
 .chat-tabs {
-  white-space-collapsing: discard;
   font-size: 0.8em !important;
+  height: 100%;
 }
 
 .chat-tab-header {

@@ -1,12 +1,23 @@
 .game-window {
-  min-height: 700px;
   width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   background-color: #D4D4D4;
   transition: 0.5s;
+}
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  :host {
+    min-height: auto;
+  }
 }
 
 .header {

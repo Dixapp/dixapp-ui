@@ -1,6 +1,5 @@
-
-.chat-tabs {
-  white-space-collapsing:discard;
+:host {
+  height: 100%;
 }
 
 .start-button {
@@ -11,7 +10,7 @@
   display: flex;
   flex-flow: column;
   overflow: hidden;
-  height: 800px;
+  height: calc(100vh - 100px);
 }
 
 .chat-form {

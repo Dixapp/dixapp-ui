@@ -1,18 +1,7 @@
-.room-container {
-  overflow: hidden;
-  transition: 0.5s;
-  height: 800px;
-}
 
-.game-window {
-  overflow: hidden;
-  transition: 0.5s;
-  height: 800px;
-}
 
 .my-hidden {
-  height: 0;
-  transition: 0.5s;
+  flex: 0 0 !important;
 }
 
 .flex-view {
@@ -21,15 +10,18 @@
 }
 
 .main-view {
-  display: block;
+  display: flex;
+  flex-flow: column;
   flex: 1 1;
   padding: 10px 0 0 10px;
+  min-height: calc(100vh - 10px);
 }
 
 .chat-view {
   display: block;
   flex: 0 0 500px;
   padding: 10px 0 0 10px;
+  height: calc(100vh - 10px);
 }
 
 .chat-card {
@@ -37,6 +29,39 @@
   font-size: 13px;
   line-height: 1em;
 }
+
+.control-buttons {
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-buttons > div {
+  flex: 1 1;
+  margin-left: 10px;
+}
+
+.control-buttons > div:first-child {
+  margin-left: 0;
+}
+
+
+
+
+.room-container {
+  overflow: hidden;
+  visibility: visible;
+  flex: 1 1;
+}
+
+.game-window {
+  overflow: hidden;
+  visibility: visible;
+  flex: 1 1;
+}
+
+
 
 .sidenav {
   height: 100%;
@@ -60,19 +85,15 @@ button {
   width: 100%;
 }
 
-.control-buttons {
-  display: flex;
-}
 
-.control-buttons > div {
-  flex: 1 1;
-}
+
 
 
 @media screen and (max-width: 1200px) {
   .room-container {
     overflow: auto;
     height: auto;
+    min-height: auto;
   }
 
   .flex-view {
@@ -92,6 +113,7 @@ button {
   .game-window {
     overflow: auto;
     height: auto;
+    min-height: auto;
   }
 
   .my-hidden {
