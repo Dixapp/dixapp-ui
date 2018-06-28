@@ -1,5 +1,5 @@
 
-<p-tabView [styleClass]="'chat-tabs'">
+<p-tabView [styleClass]="'chat-tabs'" [activeIndex]="activeTab">
   <p-tabPanel headerStyleClass="chat-tab-header" header="{{'cah/global_chat' | translate}}">
 
     <div class="tab-panel">
@@ -28,7 +28,7 @@
 
 
   </p-tabPanel>
-  <p-tabPanel headerStyleClass="chat-tab-header" header="{{'cah/local_chat' | translate}}">
+  <p-tabPanel headerStyleClass="chat-tab-header" header="{{'cah/local_chat' | translate}}" [disabled]="!roomChatActive">
     <div class="tab-panel">
       <div class="setup-panel">
         <button [disabled]="!startButtonActive" pButton (click)="startGame()" label="Start" class="start-button"></button>

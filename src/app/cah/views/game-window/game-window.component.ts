@@ -7,20 +7,7 @@ import {combineLatest} from "rxjs/observable/combineLatest";
 @Component({
   selector: 'app-game-window',
   templateUrl: './game-window.component.html',
-  styleUrls: ['./game-window.component.css'],
-  animations: [
-    trigger('fadeAnimation', [
-      state('collapsed', style({
-        backgroundColor: 'black',
-        color: 'white'
-      })),
-      state('expanded', style({
-        backgroundColor: '*',
-        color: '*'
-      })),
-      transition('expanded => collapsed', animate('500ms ease-in-out'))
-    ])
-  ]
+  styleUrls: ['./game-window.component.css']
 })
 export class GameWindowComponent implements OnInit {
 
@@ -56,7 +43,11 @@ export class GameWindowComponent implements OnInit {
 
     combineLatest(this.cahService.room, this.cahService.stage, this.cahService.chooser).subscribe(([room, stage, chooser])=>{
       this.choosingActive = room && room.users.length >= 2 && stage === 2 && this.userService.userData.user !== chooser;
-      if(stage === 1) this.answers = [];
+      if(stage === 1) {
+        this.answers = [];
+        this.selectedCards = [];
+        this.indexOfSelection = 0;
+      }
       if(stage === 0 || !room) {
         this.question = null;
         this.selectedCards = [];
@@ -76,7 +67,9 @@ export class GameWindowComponent implements OnInit {
         this.indexOfSelection = 0;
         this.selectedCards[this.indexOfSelection++] = a;
       }
-      if(this.indexOfSelection == this.toSelect) this.cahService.sendAnswers(this.selectedCards);
+      if(this.indexOfSelection == this.toSelect) {
+        this.cahService.sendAnswers(this.selectedCards);
+      }
     }
   }
 

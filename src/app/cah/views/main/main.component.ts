@@ -3,8 +3,8 @@ import { SocketService, socketServiceFactory } from "../../../helpers/socket.ser
 import { MessageService } from "primeng/components/common/messageservice";
 import { UserService } from "../../../access/user.service";
 import { CahService } from "../../shared_services/cah.service";
-import { trigger, state, transition, animate, style } from "@angular/animations";
-import { RoomsDialogComponent } from "../rooms-dialog/rooms-dialog.component";
+import { trigger, state, transition, animate, style } from '@angular/animations';
+import { RoomsDialogComponent } from '../rooms-dialog/rooms-dialog.component';
 
 @Component({
   selector: 'app-dixit',
@@ -26,8 +26,8 @@ export class MainComponent implements OnInit, OnDestroy {
 
   @ViewChild('dialog') dialog: RoomsDialogComponent;
   socket: SocketService;
-  roomTitle: any = "";
-  chooser: any = "";
+  roomTitle: any = '';
+  chooser: any = '';
   constructor(private messageService: MessageService, private cahService: CahService) { }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class MainComponent implements OnInit, OnDestroy {
       this.chooser = chooser;
     });
     this.cahService.stage.subscribe((stage)=>{
-      this.chooser = stage === 0 ? "" : this.chooser;
+      this.chooser = stage === 0 ? '' : this.chooser;
     });
 
   }

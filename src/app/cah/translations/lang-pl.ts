@@ -6,5 +6,6 @@ export const LANG_PL_TRANS_CAH = {
   'joinToGame': 'Dołącz do gry',
   'youAreAlreadyInGame': 'Jesteś już w pokoju',
   'global_chat': 'Pokój z wami',
-  'local_chat': 'Pokój z nami'
+  'local_chat': 'Pokój z nami',
+  'chooserDescription': 'Odpowiedzi wybiera: '
 };

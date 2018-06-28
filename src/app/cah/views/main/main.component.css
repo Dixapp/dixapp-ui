@@ -2,6 +2,7 @@
 
 .my-hidden {
   flex: 0 0 !important;
+  display: none;
 }
 
 .flex-view {
@@ -35,6 +36,25 @@
   flex: 0 0 auto;
   display: flex;
   justify-content: space-between;
+}
+
+.info-panel {
+  flex: 0 0 auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.info-panel .info {
+  flex: 1 1;
+  border: 1px solid #888888;
+  border-radius: 2px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.info-panel .info:first-child {
+  margin-right: 0;
 }
 
 .control-buttons > div {

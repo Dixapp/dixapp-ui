@@ -15,6 +15,19 @@
       </div>
     </div>
 
+    <div *ngIf="roomTitle || chooser" class="info-panel">
+
+      <div *ngIf="roomTitle" class="info">
+        {{roomTitle}}
+      </div>
+
+      <div *ngIf="chooser" class="info">
+        <span class="chooser-description">{{'cah/chooserDescription' | translate}}</span>
+        <span class="chooser-name">{{chooser}}</span>
+      </div>
+
+    </div>
+
     <div [ngClass]="!viewState ? 'my-hidden' : '' " class="room-container">
       <app-rooms> </app-rooms>
     </div>
