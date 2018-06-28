@@ -1,78 +1,41 @@
-<!--<p-growl></p-growl>-->
 
 <app-rooms-dialog #dialog></app-rooms-dialog>
 
-<div class="main">
-
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-12 ui-g-nopad">
-      <div class="ui-g-12 ui-md-6">
-        <button *ngIf="createButtonState" pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>
-        <button *ngIf="backButtonState" pButton (click)="switchView()" type="button" label="{{!viewState ? 'Pokoje':'Gra'}}" icon="{{ !viewState ? 'fa-arrow-left' : 'fa-arrow-right' }}"></button>
-        <button *ngIf="leaveButtonState" pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>
+<div class="flex-view">
+  <div class="main-view">
+    <div class="control-buttons">
+      <div *ngIf="createButtonState" class="create-button">
+          <button  pButton (click)="openDialog()" type="button" label="Utwórz pokój" icon="fa-plus"></button>
       </div>
-        <div class="info">
-          <p *ngIf="roomTitle">
-            <span>Twój pokój: <b>{{roomTitle}}</b></span>
-            <span *ngIf="chooser" style="padding-left: 10px;"> Odpowiedzi wybiera: <b>{{chooser}}</b></span>
-          </p>
-        </div>
-      <div class="ui-g-12 ui-g-nopad">
-        <div class="ui-g">
-          <div class="ui-g-12 ui-md-12">
-            <div [@toggleAnimation]="viewState ? 'expanded' : 'collapsed'" class="room-container">
-              <app-rooms> </app-rooms>
-            </div>
-          </div>
-        </div>
-
-        <div class="ui-g" style="margin-top: -20px;">
-          <div class="ui-g-12 ui-md-12">
-            <div [@toggleAnimation]="viewState ? 'collapsed' : 'expanded'" class="game-window">
-              <app-game-window></app-game-window>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="ui-g room-container">
-          <div class="ui-g-6 ui-md-3">XD</div>
-          <div class="ui-g-6 ui-md-3">XD</div>
-          <div class="ui-g-6 ui-md-3">XD</div>
-          <div class="ui-g-6 ui-md-3">XD</div>
-        </div>
-
-        <div class="ui-g">
-          <div class="ui-g-12 ui-md-6">Phasellus faucibus purus volutpat mauris lacinia sodales. Ut sit amet sapien facilisis, commodo dui non, fringilla tellus. Quisque tempus facilisis nisi sodales finibus. Pellentesque neque orci, ullamcorper vitae ligula quis, dignissim euismod augue.</div>
-          <div class="ui-g-12 ui-md-6">Fusce ullamcorper congue massa, eget ullamcorper nunc lobortis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultrices dui eget dolor feugiat dapibus. Aliquam pretium leo et egestas luctus. Nunc facilisis gravida tellus.</div>
-        </div>
+      <div *ngIf="backButtonState" class="back-button">
+          <button  pButton (click)="switchView()" type="button" label="{{!viewState ? 'Pokoje':'Gra'}}" icon="{{ !viewState ? 'fa-arrow-left' : 'fa-arrow-right' }}"></button>
+      </div>
+      <div *ngIf="leaveButtonState" class="leave-button">
+          <button  pButton type="button" (click)="leaveRoom()" class="ui-button-danger" label="Opuść pokój"></button>
       </div>
     </div>
 
-    <div class="ui-g-12">
-      <p-messages></p-messages>
-    </div>
+    <div *ngIf="roomTitle || chooser" class="info-panel">
 
-    <div class="ui-g-12">
-      <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-        <div class="flipper">
-          <div class="front">
-            XDDD
-          </div>
-          <div class="back">
-            SMUTEG
-          </div>
-        </div>
+      <div *ngIf="roomTitle" class="info">
+        {{roomTitle}}
       </div>
+
+      <div *ngIf="chooser" class="info">
+        <span class="chooser-description">{{'cah/chooserDescription' | translate}}</span>
+        <span class="chooser-name">{{chooser}}</span>
+      </div>
+
     </div>
 
-
-
+    <div [ngClass]="!viewState ? 'my-hidden' : '' " class="room-container">
+      <app-rooms> </app-rooms>
+    </div>
+    <div [ngClass]="viewState ? 'my-hidden' : '' " class="game-window">
+      <app-game-window></app-game-window>
+    </div>
   </div>
-
-</div>
-
-
-<div class="sidenav">
-  <app-chat></app-chat>
+  <div class="chat-view">
+    <app-chat></app-chat>
+  </div>
 </div>

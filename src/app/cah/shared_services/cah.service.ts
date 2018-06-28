@@ -21,6 +21,7 @@ export class CahService {
   chooser: Subject<any> = new Subject<any>();
   scores: Subject<any> = new Subject<any>();
   error: Subject<any> = new Subject<any>();
+  disconnect: Subject<any> = new Subject<any>();
 
   constructor(private userService: UserService, private snackBar: MatSnackBar) {
 
@@ -38,6 +39,7 @@ export class CahService {
     this.socket.on('chooser', (chooser)=> this.chooser.next(chooser));
     this.socket.on('scores', (scores)=> this.scores.next(scores));
     this.socket.on('error_msg', (err)=> this.error.next(err));
+    this.socket.on('disconnect', (dc)=>this.disconnect.next(dc));
 
     this.serverMsg.subscribe((msg)=>{
       this.snackBar.open(msg.msg, "info", {duration: 3000});
@@ -48,7 +50,7 @@ export class CahService {
     });
 
     this.error.subscribe((error)=>{
-      console.log(error);
+      this.snackBar.open(error, "error", {duration: 3000});
     });
 
   }

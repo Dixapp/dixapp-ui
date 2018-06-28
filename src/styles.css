@@ -3,3 +3,24 @@ body {
   background-color: #888888;
 }
 
+.chat-tabs {
+  font-size: 0.8em !important;
+  height: 100%;
+}
+
+.chat-tab-header {
+  color: black !important;
+  display: inline-block;
+  width: 50%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;;
+  padding-left: 0 !important;;
+  padding-right: 0 !important;;
+  text-align: center !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .chat-tabs {
+    font-size: 0.6em !important;
+  }
+}

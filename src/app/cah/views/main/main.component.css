@@ -1,13 +1,87 @@
-.room-container {
-  overflow: hidden;
+
+
+.my-hidden {
+  flex: 0 0 !important;
+  display: none;
+}
+
+.flex-view {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-view {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1;
+  padding: 10px 0 0 10px;
+  min-height: calc(100vh - 10px);
+}
+
+.chat-view {
+  display: block;
+  flex: 0 0 500px;
+  padding: 10px 0 0 10px;
+  height: calc(100vh - 10px);
 }
 
 .chat-card {
   margin-top: 10px;
   font-size: 13px;
   line-height: 1em;
-
 }
+
+.control-buttons {
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-panel {
+  flex: 0 0 auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.info-panel .info {
+  flex: 1 1;
+  border: 1px solid #888888;
+  border-radius: 2px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.info-panel .info:first-child {
+  margin-right: 0;
+}
+
+.control-buttons > div {
+  flex: 1 1;
+  margin-left: 10px;
+}
+
+.control-buttons > div:first-child {
+  margin-left: 0;
+}
+
+
+
+
+.room-container {
+  overflow: hidden;
+  visibility: visible;
+  flex: 1 1;
+}
+
+.game-window {
+  overflow: hidden;
+  visibility: visible;
+  flex: 1 1;
+}
+
+
 
 .sidenav {
   height: 100%;
@@ -23,74 +97,46 @@
 }
 
 .main {
-  margin-right: 350px; /* Same as the width of the sidenav */
-  padding-right: 10px;
+  /*margin-right: 350px; !* Same as the width of the sidenav *!*/
+  /*padding-right: 10px;*/
 }
 
-.game-window {
-  overflow: hidden;
-  /*border:1px solid black;*/
-  border-radius: 2px;
-  background-color: #D4D4D4;
+button {
+  width: 100%;
 }
 
 
-.flip-container {
-  /*perspective: 1000px;*/
-}
-/* flip the pane when hovered */
-.flip-container:hover .flipper, .flip-container.hover .flipper {
-  transform: rotateY(180deg);
-}
 
-.flip-container, .front, .back {
-  width: 320px;
-  height: 480px;
-}
 
-/* flip speed goes here */
-.flipper {
-  transition: 0.6s;
-  transform-style: preserve-3d;
 
-  position: relative;
-}
+@media screen and (max-width: 1200px) {
+  .room-container {
+    overflow: auto;
+    height: auto;
+    min-height: auto;
+  }
 
-/* hide back of pane during swap */
-.front, .back {
-  backface-visibility: hidden;
+  .flex-view {
+    display: block;
+    position: relative;
+  }
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 2px solid black;
+  .main-view {
+    width: 100%;
+    display: block;
+  }
 
-}
+  .chat-view {
+    width: 100%;
+  }
 
-/* front pane, placed above back */
-.front {
-  z-index: 2;
-  /* for firefox 31 */
-  transform: rotateY(0deg);
-}
+  .game-window {
+    overflow: auto;
+    height: auto;
+    min-height: auto;
+  }
 
-/* back, initially hidden pane */
-.back {
-  transform: rotateY(180deg);
-}
-
-.info {
-  height: 60px;
-  top: 20px;
-  background-color: #D4D4D4;
-  border-radius: 10px;
-  margin-top: -5px;
-  width: calc(50% - 310px);
-  left: calc(50% - 70px);
-  position: absolute;
-  font-family: 'Raleway', sans-serif;
-  font-size: 20px;
-  padding: 5px;
-  z-index: -100;
-  /*margin-top: -10px;*/
+  .my-hidden {
+    height: 0;
+  }
 }
